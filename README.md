@@ -1,5 +1,7 @@
 # Intelligent Information Retrieval in Digital Asset Management Systems: A RAG-Enhanced Approach
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15648392.svg)](https://doi.org/10.5281/zenodo.15648392)
+
 ## Abstract
 
 This paper explores how Digital Asset Management (DAM) systems are evolving from simple content archives into sophisticated platforms for intelligent information retrieval. It highlights the integration of Artificial Intelligence (AI), specifically Retrieval-Augmented Generation (RAG) architectures. This allows these systems to process natural language queries and provide contextually relevant information, significantly boosting asset discoverability and operational efficiency.
