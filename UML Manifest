@@ -1,0 +1,58 @@
+@startuml
+skinparam style strict
+skinparam sequence {
+  ArrowColor black
+  ActorBorderColor black
+  ActorFontColor black
+  ParticipantBorderColor black
+  ParticipantFontColor black
+  LifeLineBorderColor grey
+  LifeLineBackgroundColor #lightyellow
+  BoxBorderColor grey
+  BoxBackgroundColor #lightgrey
+}
+skinparam database {
+  BorderColor black
+  FontColor black
+  BackgroundColor #lightblue
+}
+
+actor "User" as U
+
+box "DAM" #whitesmoke
+  participant "Asset Ingestion & Analysis" as AIN
+  database "Vector DB" as VDB
+  participant "Query Interface" as Q_UI
+  participant "Player" as Player_D
+end box
+
+
+
+== Asset Prep ==
+AIN -> AIN : process asset\n(transcribe, visuals, etc.)
+activate AIN
+AIN -> VDB : store vector\nembeddings + metadata
+deactivate AIN
+
+
+== User Q&A ==
+U -> Q_UI : natural language\nquestion
+activate Q_UI
+Q_UI -> VDB : query for context
+activate VDB
+VDB --> Q_UI : relevant context
+deactivate VDB
+
+Q_UI -> LLM_Model : question +\ncontext
+activate LLM_Model
+LLM_Model --> Q_UI : AI-driven answer
+deactivate LLM_Model
+
+Q_UI -> Player_D : send answer
+deactivate Q_UI
+activate Player_D
+Player_D --> U : display answer
+deactivate Player_D
+
+
+@enduml
